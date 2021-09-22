@@ -4,9 +4,15 @@ let xTurn
 const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
 
-cellElements.forEach((cell) => {
-    cell.addEventListener('click', handleClick, { once: true });
-})
+startGame();
+
+function startGame() {
+    xTurn = true;
+    setBoardHoverClass();
+    cellElements.forEach((cell) => {
+        cell.addEventListener('click', handleClick, { once: true });
+    })
+}
 
 function handleClick(e) {
     const cell = e.target;
