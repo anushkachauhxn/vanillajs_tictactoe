@@ -4,6 +4,7 @@
 
 :root {
     --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * 0.85);
 }
 
 body {
@@ -48,4 +49,42 @@ body {
 .cell:nth-child(8),
 .cell:nth-child(7) {
     border-bottom: none;
+}
+
+/* X in the cells */
+.cell.x::before,
+.cell.x::after {
+    content: '';
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: black;
+    position: absolute;
+}
+
+.cell.x::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after {
+    transform: rotate(-45deg);
+}
+
+/* O in the cells */
+.cell.o::before,
+.cell.o::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.o::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cell.o::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: white;
 }
