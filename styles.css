@@ -51,6 +51,12 @@ body {
     border-bottom: none;
 }
 
+/* Removing pointer from filled cells */
+.cell.x, 
+.cell.o {
+    cursor: not-allowed;
+}
+
 /* X in the cells */
 .cell.x::before,
 .cell.x::after {
