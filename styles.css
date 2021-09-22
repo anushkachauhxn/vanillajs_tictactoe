@@ -136,12 +136,12 @@ body {
 
 /*  WINNING MESSAGE  */
 .winning-message {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -163,4 +163,9 @@ body {
     background-color: black;
     color: white;
     border-color: white;
+}
+
+/*  The message only shows up if we add the .show class to the element  */
+.winning-message.show {
+    display: flex;
 }
