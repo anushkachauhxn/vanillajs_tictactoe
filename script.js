@@ -35,9 +35,14 @@ function handleClick(e) {
         endGame(false);
     }
     // Check for Draw
+    else if (isDraw()) {
+        endGame(true);
+    }
     // Switch Turns
-    swapTurns();
-    setBoardHoverClass();
+    else {
+        swapTurns();
+        setBoardHoverClass();
+    }
 }
 
 function placeMark(cell) {
@@ -67,9 +72,17 @@ function checkWin() {
     })
 }
 
+function isDraw() {
+    // Check if: 'every' cell in cellElements 
+    return [...cellElements].every((cell) => {
+        // is filled i.e. contains a X_CLASS or O_CLASS
+        return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS);
+    })
+}
+
 function endGame(draw) {
     if (draw) {
-        console.log('draw')
+        winningMessageTextElement.innerText = 'Draw!';
     } else {
         winningMessageTextElement.innerText = `${xTurn ? "X's" : "O's"} Wins!`;
     }
