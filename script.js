@@ -15,15 +15,26 @@ const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
 const winningMessageElement = document.getElementById('winning-message');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
+const restartButton = document.getElementById('restart-button');
 
 startGame();
+restartButton.addEventListener('click', startGame);
 
 function startGame() {
     xTurn = true;
     setBoardHoverClass();
+
+    // in case of restarting the game, we have to UNSET everything
+    winningMessageElement.classList.remove('show');
+    cellElements.forEach((cell) => {
+        cell.classList.remove(X_CLASS, O_CLASS);
+        cell.removeEventListener('click', handleClick);
+    });
+
+    // set an EventListener for new game
     cellElements.forEach((cell) => {
         cell.addEventListener('click', handleClick, { once: true });
-    })
+    });
 }
 
 function handleClick(e) {
